@@ -1,0 +1,103 @@
+.product-details {
+   .back {
+      margin-top: 1rem;
+
+      .btn {
+         padding: 0.8rem 2.5rem;
+         text-transform: uppercase;
+      }
+   }
+
+   .details {
+      margin-top: 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .img {
+         flex: 2;
+      }
+
+      .title {
+         flex: 1;
+         padding: 2rem 0;
+         margin: 0 1rem;
+
+         h2 {
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+         }
+
+         p {
+            font-size: 15px;
+         }
+      }
+
+      .box {
+         flex: 1;
+         border: 1px solid $grey-color;
+
+         div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid $grey-color;
+         }
+
+         .select-box {
+            padding: 0;
+            padding-left: 1rem;
+         }
+
+         .button {
+            border-bottom: none;
+
+            .btn {
+               width: 100%;
+            }
+         }
+      }
+   }
+
+   .line {
+      margin: 1rem 0;
+   }
+
+   .review-section {
+      width: 50%;
+
+      h3 {
+         text-transform: uppercase;
+      }
+
+      .reviews {
+         .review {
+            padding: 1rem;
+            border-bottom: 1px solid $grey-color;
+
+            strong {
+               font-size: 0.8rem;
+            }
+         }
+
+         .review:last-child {
+            border-bottom: none;
+         }
+      }
+   }
+
+   .comment {
+      .select {
+         select {
+            background-color: $grey-color;
+            padding: 0.8rem 1rem;
+         }
+
+         i {
+            top: 30%;
+            right: 2%;
+         }
+      }
+   }
+}

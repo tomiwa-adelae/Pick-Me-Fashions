@@ -1,0 +1,160 @@
+@import 'config';
+@import 'utilities';
+@import 'auth';
+@import 'home';
+@import 'product';
+@import 'cart';
+@import 'admin';
+@import 'shipping';
+@import 'profile';
+@import 'order-reviews';
+@import 'myorders-page';
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: $white-color;
+   color: $black-color;
+   width: 100%;
+   height: 100%;
+   font-family: 'Montserrat Alternates', sans-serif;
+   font-size: 17px;
+   line-height: 1.6;
+   overflow: none;
+}
+
+header {
+   background-color: $primary-color;
+   color: $white-color;
+   padding: 1rem 0;
+   text-transform: uppercase;
+   position: relative;
+
+   .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 85%;
+      margin: 0 auto;
+      max-width: 1224px;
+
+      .burger {
+         cursor: pointer;
+         position: absolute;
+         right: 3%;
+         display: none;
+         z-index: 10;
+
+         div {
+            background: $white-color;
+            margin: 0.3rem 0;
+            width: 28px;
+            height: 3px;
+            @include easeOut;
+         }
+
+         &.close {
+            .line-1 {
+               transform: rotate(45deg) translate(5px, 5px);
+            }
+            .line-2 {
+               opacity: 0;
+            }
+            .line-3 {
+               transform: rotate(-45deg) translate(6px, -6px);
+            }
+         }
+      }
+
+      a {
+         color: $white-color;
+         font-weight: bold;
+         @include easeOut;
+
+         &:hover {
+            color: $grey-color;
+         }
+      }
+
+      .icons {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         a {
+            margin-left: 1rem;
+            font-size: 14px;
+         }
+
+         .admin {
+            padding-right: 2rem;
+         }
+
+         .user {
+            padding-right: 1rem;
+         }
+
+         .user,
+         .admin {
+            position: relative;
+
+            .drop-down {
+               position: absolute;
+               top: 0;
+               right: 0;
+               display: block;
+               width: 100%;
+               margin-top: 2rem;
+               border: 1px solid $grey-color;
+               z-index: 2;
+               li {
+                  display: inline-block;
+                  padding: 0.2rem 0;
+                  cursor: pointer;
+                  width: 100%;
+                  text-transform: uppercase;
+                  background-color: lighten($grey-color, 20%);
+                  color: $black-color;
+                  @include easeOut();
+
+                  a {
+                     color: $black-color;
+                     display: inline-block;
+                     width: 100%;
+                     font-size: 13px;
+                  }
+
+                  &:hover {
+                     background-color: lighten($grey-color, 7%);
+                  }
+               }
+            }
+
+            .hide-drop-down {
+               display: none;
+            }
+         }
+      }
+   }
+}
+
+main {
+   min-height: 85vh;
+}
+
+footer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   padding: 1rem;
+   font-weight: bold;
+   margin-top: 1rem;
+   font-size: 0.9rem;
+}
+
+@import 'mobile';

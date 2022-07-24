@@ -1,0 +1,67 @@
+.myorder-page {
+   h1 {
+      margin-top: 2rem;
+      text-transform: uppercase;
+   }
+
+   table {
+      text-align: left;
+      width: 100%;
+      thead {
+         th {
+            padding: 0.5rem;
+         }
+      }
+
+      tbody {
+         tr:nth-child(even) {
+            background: $white-color;
+            margin: 0;
+         }
+         tr:nth-child(odd) {
+            background: $grey-color;
+            margin: 0;
+         }
+
+         tr {
+            cursor: pointer;
+         }
+
+         td {
+            padding: 0.5rem;
+         }
+
+         .fa-times {
+            color: $danger-color;
+         }
+
+         button {
+            font-weight: bold;
+         }
+
+         .btn {
+            font-size: 0.7rem;
+         }
+
+         .icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            i {
+               background-color: lighten($grey-color, 15%);
+               padding: 0.5rem;
+            }
+
+            .fa-trash {
+               background-color: $danger-color;
+               color: $white-color;
+            }
+         }
+      }
+   }
+
+   .mobile {
+      display: none;
+   }
+}
