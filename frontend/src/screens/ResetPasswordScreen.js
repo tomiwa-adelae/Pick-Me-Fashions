@@ -22,7 +22,7 @@ class ResetPasswordScreen extends Component {
       const id = this.props.match.params.id;
       const token = this.props.match.params.token;
 
-      const url = `/api/password-reset/${id}/${token}`;
+      const url = `https://pickmefashions.herokuapp.com/api/password-reset/${id}/${token}`;
 
       this.setState({ url: url });
       axios
