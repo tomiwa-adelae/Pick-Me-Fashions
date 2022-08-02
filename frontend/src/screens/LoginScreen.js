@@ -80,9 +80,6 @@ class LoginScreen extends Component {
                      onChange={this.onChange}
                   />
                </div>
-               <strong>
-                  <Link to="/forgot-password">Forgot Password?</Link>
-               </strong>
                <div>
                   <button className="btn btn-primary">Sign In</button>
                </div>
