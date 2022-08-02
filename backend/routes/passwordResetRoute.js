@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
             token: crypto.randomBytes(32).toString('hex'),
          }).save();
 
-         const url = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}`;
+         const url = `https://pickmefashions.herokuapp.com/password-reset/${user._id}/${token.token}`;
 
          const request = mailjet.post('send', { version: 'v3.1' }).request({
             Messages: [
