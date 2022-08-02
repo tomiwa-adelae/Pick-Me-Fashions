@@ -24,10 +24,17 @@ import {
    USER_UPDATE_PROFILE_SUCCESS,
    USER_UPDATE_PROFILE_RESET,
    USER_UPDATE_PROFILE_FAIL,
+   FORGOT_PASSWORD_REQUEST,
+   FORGOT_PASSWORD_SUCCESS,
+   FORGOT_PASSWORD_FAIL,
+   RESET_PASSWORD_REQUEST,
+   RESET_PASSWORD_SUCCESS,
+   RESET_PASSWORD_FAIL,
 } from '../constants/userConstant';
 import { REMOVE_SHIPPING_ADDRESS } from '../constants/shippingConstant';
 import { returnErrors } from '../actions/errorActions';
 import { CART_REMOVE_ALL_PRODUCTS } from '../constants/cartConstant';
+import { CLEAR_ERRORS } from '../constants/errorConstant';
 
 // Login existing user
 export const loginUser = (user) => (dispatch) => {
@@ -229,6 +236,52 @@ export const deleteUser = (id) => (dispatch, getState) => {
          dispatch(returnErrors(err.response.data.message));
          dispatch({
             type: USER_DELETE_FAIL,
+         });
+      });
+};
+
+// Forgot a User password
+export const forgotPassword = (email) => (dispatch, getState) => {
+   dispatch({
+      type: FORGOT_PASSWORD_REQUEST,
+   });
+
+   axios
+      .post(`/api/password-reset`, email, tokenConfig(getState))
+      .then((res) => {
+         dispatch({
+            type: FORGOT_PASSWORD_SUCCESS,
+            payload: res.data,
+         });
+         dispatch({ type: CLEAR_ERRORS });
+      })
+      .catch((err) => {
+         dispatch(returnErrors(err.response.data.message));
+         dispatch({
+            type: FORGOT_PASSWORD_FAIL,
+         });
+      });
+};
+
+// Forgot a User password
+export const resetPassword = (url, password) => (dispatch, getState) => {
+   dispatch({
+      type: RESET_PASSWORD_REQUEST,
+   });
+
+   axios
+      .post(url, { password }, tokenConfig(getState))
+      .then((res) => {
+         dispatch({
+            type: RESET_PASSWORD_SUCCESS,
+            payload: res.data,
+         });
+         dispatch({ type: CLEAR_ERRORS });
+      })
+      .catch((err) => {
+         dispatch(returnErrors(err.response.data.message));
+         dispatch({
+            type: RESET_PASSWORD_FAIL,
          });
       });
 };

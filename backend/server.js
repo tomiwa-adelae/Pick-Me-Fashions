@@ -7,6 +7,7 @@ import authRoute from './routes/authRoute.js';
 import productRoute from './routes/productRoute.js';
 import uploadRoute from './routes/uploadRoute.js';
 import orderRoute from './routes/orderRoute.js';
+import passwordResetRoute from './routes/passwordResetRoute.js';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
 app.use('/api/uploads', uploadRoute);
+app.use('/api/password-reset', passwordResetRoute);
 
 // Paypal API
 app.get('/api/config/paypal', (req, res) => {

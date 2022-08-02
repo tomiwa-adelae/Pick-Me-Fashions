@@ -22,6 +22,12 @@ import {
    USER_UPDATE_PROFILE_SUCCESS,
    USER_UPDATE_PROFILE_FAIL,
    USER_UPDATE_PROFILE_RESET,
+   FORGOT_PASSWORD_REQUEST,
+   FORGOT_PASSWORD_SUCCESS,
+   FORGOT_PASSWORD_FAIL,
+   RESET_PASSWORD_REQUEST,
+   RESET_PASSWORD_SUCCESS,
+   RESET_PASSWORD_FAIL,
 } from '../constants/userConstant';
 
 const initialState = {
@@ -35,6 +41,8 @@ const initialState = {
    singleUser: null,
    updateSuccess: false,
    userUpdated: false,
+   successMsg: null,
+   successResetMsg: null,
 };
 
 export default function userReducer(state = initialState, action) {
@@ -46,6 +54,8 @@ export default function userReducer(state = initialState, action) {
       case USER_DETAILS_REQUEST:
       case USER_UPDATE_REQUEST:
       case USER_UPDATE_PROFILE_REQUEST:
+      case FORGOT_PASSWORD_REQUEST:
+      case RESET_PASSWORD_REQUEST:
          return {
             ...state,
             userLoading: true,
@@ -118,6 +128,28 @@ export default function userReducer(state = initialState, action) {
             ...state,
             userLoading: false,
             updateSuccess: true,
+         };
+      case FORGOT_PASSWORD_SUCCESS:
+         return {
+            ...state,
+            userLoading: false,
+            successMsg: action.payload.message,
+         };
+      case FORGOT_PASSWORD_FAIL:
+         return {
+            ...state,
+            userLoading: false,
+         };
+      case RESET_PASSWORD_SUCCESS:
+         return {
+            ...state,
+            userLoading: false,
+            successResetMsg: action.payload.message,
+         };
+      case RESET_PASSWORD_FAIL:
+         return {
+            ...state,
+            userLoading: false,
          };
       default:
          return state;

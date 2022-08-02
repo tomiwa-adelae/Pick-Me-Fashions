@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/userActions';
+import { forgotPassword } from '../actions/userActions';
 import { clearErrors } from '../actions/errorActions';
 import ErrorMessage from '../components/ErrorMessage';
+import Message from '../components/Message';
 import Loader from '../components/Loader';
 
-class LoginScreen extends Component {
+class ForgotPasswordScreen extends Component {
    state = {
       email: '',
-      password: '',
    };
-
-   componentDidMount() {
-      this.props.clearErrors();
-   }
 
    componentDidUpdate() {
       if (this.props.isAuthenticated) {
@@ -38,25 +34,22 @@ class LoginScreen extends Component {
    onSubmit = (e) => {
       e.preventDefault();
 
-      const { email, password } = this.state;
-
-      const user = {
-         email,
-         password,
-      };
+      const { email } = this.state;
 
       // Attempt login
-      this.props.loginUser(user);
+      // console.log({ email });
+      this.props.forgotPassword({ email });
    };
 
    render() {
-      const { email, password } = this.state;
-      const { error, userLoading } = this.props;
+      const { email } = this.state;
+      const { error, userLoading, successMsg } = this.props;
       return (
          <div className="auth-page container">
-            <h1>Sign In</h1>
+            <h1>Forgot Password</h1>
             {userLoading && <Loader />}
             {error.message !== null && <ErrorMessage message={error.message} />}
+            {successMsg && <Message message={successMsg} />}
             <form onSubmit={this.onSubmit}>
                <div>
                   <label htmlFor="email">Email Address</label>
@@ -70,24 +63,10 @@ class LoginScreen extends Component {
                   />
                </div>
                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                     type="password"
-                     placeholder="Enter Password"
-                     id="password"
-                     name="password"
-                     value={password}
-                     onChange={this.onChange}
-                  />
-               </div>
-               <strong>
-                  <Link to="/forgot-password">Forgot Password?</Link>
-               </strong>
-               <div>
-                  <button className="btn btn-primary">Sign In</button>
+                  <button className="btn btn-primary">Submit</button>
                </div>
                <p>
-                  New Customer? <Link to="/register">Register</Link>
+                  Already remember password? <Link to="/login">Login</Link>
                </p>
             </form>
          </div>
@@ -99,8 +78,9 @@ const mapStateToProps = (state) => ({
    error: state.error,
    userLoading: state.user.userLoading,
    isAuthenticated: state.user.isAuthenticated,
+   successMsg: state.user.successMsg,
 });
 
-export default connect(mapStateToProps, { loginUser, clearErrors })(
-   LoginScreen
+export default connect(mapStateToProps, { forgotPassword, clearErrors })(
+   ForgotPasswordScreen
 );

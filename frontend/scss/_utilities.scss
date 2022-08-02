@@ -95,6 +95,7 @@ h5 {
    font-size: 0.8rem;
    text-transform: uppercase;
    border: none;
+   font-family: 'Montserrat Alternates', sans-serif;
    outline: none;
    cursor: pointer;
    @include easeOut();
@@ -203,6 +204,7 @@ form {
          font-size: 0.8rem;
          font-weight: bold;
          display: block;
+         font-family: 'Montserrat Alternates', sans-serif;
       }
 
       input,
@@ -212,6 +214,7 @@ form {
          width: 100%;
          border: navajowhite;
          outline: none;
+         font-family: 'Montserrat Alternates', sans-serif;
          background-color: $grey-color;
          color: $black-color;
          font-size: 1rem;
@@ -274,6 +277,7 @@ form {
    color: $black-color;
    font-size: 0.8rem;
    font-weight: bold;
+   font-family: 'Montserrat Alternates', sans-serif;
    cursor: pointer;
    @include easeOut();
 }
