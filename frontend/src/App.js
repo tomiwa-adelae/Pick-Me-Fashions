@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginScreen from './screens/LoginScreen';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductDetailsScreen from './screens/ProductDetailsScreen';
@@ -25,7 +24,6 @@ import MyOrderScreen from './screens/MyOrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ScrollToTop from './components/ScrollToTop';
 import NotFoundScreen from './screens/NotFoundScreen';
-import ResetPasswordScreen from './screens/ResetPasswordScreen';
 
 class App extends Component {
    render() {
@@ -39,14 +37,6 @@ class App extends Component {
                      <Switch>
                         <Route path="/" exact component={HomeScreen} />
                         <Route path="/login" component={LoginScreen} />
-                        <Route
-                           path="/forgot-password"
-                           component={ForgotPasswordScreen}
-                        />
-                        <Route
-                           path="/password-reset/:id/:token"
-                           component={ResetPasswordScreen}
-                        />
                         <Route path="/register" component={RegisterScreen} />
                         <Route
                            path="/product/:id"
