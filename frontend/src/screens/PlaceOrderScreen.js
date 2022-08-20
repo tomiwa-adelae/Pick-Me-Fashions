@@ -31,7 +31,8 @@ class PlaceOrderScreen extends Component {
       }
 
       if (order !== null) {
-         return this.props.history.push(`/order/${order._id}`);
+         // return this.props.history.push(`/order/${order._id}`);
+         return this.props.history.push(`/order-success`);
       }
    }
 
@@ -66,7 +67,7 @@ class PlaceOrderScreen extends Component {
    render() {
       const { cartItems, shippingAddress, paymentMethod, orderLoading, error } =
          this.props;
-      const { address, city, country } = shippingAddress;
+      const { address, city, country, phoneNumber } = shippingAddress;
 
       const toPrice = (num) => Number(num.toFixed(2));
       const itemPrice = toPrice(
@@ -91,8 +92,9 @@ class PlaceOrderScreen extends Component {
                      <div className="box">
                         <h3>Shipping</h3>
                         <p>
-                           Address : {address}, {city}, {country}
+                           Address : {address}, {city}, {country} {}
                         </p>
+                        <p>Phone Number : {phoneNumber}</p>
                      </div>
                      <div className="box">
                         <h3>Payment Method</h3>

@@ -62,6 +62,9 @@ class AdminOrderDetailsScreen extends Component {
                               {order.shippingAddress.city},{' '}
                               {order.shippingAddress.country}{' '}
                            </p>
+                           <p>
+                              Phone Number: {order.shippingAddress.phoneNumber}
+                           </p>
                            {order.isDelivered ? (
                               <Message
                                  message={`Delivered at ${order.deliveredAt}`}

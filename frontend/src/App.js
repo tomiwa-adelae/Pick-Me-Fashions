@@ -24,6 +24,7 @@ import MyOrderScreen from './screens/MyOrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ScrollToTop from './components/ScrollToTop';
 import NotFoundScreen from './screens/NotFoundScreen';
+import OrderSuccessScreen from './screens/OrderSuccessScreen';
 
 class App extends Component {
    render() {
@@ -52,6 +53,10 @@ class App extends Component {
                         <Route
                            path="/order/:id"
                            component={OrderReviewScreen}
+                        />
+                        <Route
+                           path="/order-success"
+                           component={OrderSuccessScreen}
                         />
                         <Route path="/myorders" component={MyOrderScreen} />
                         <Route path="/profile" component={ProfileScreen} />

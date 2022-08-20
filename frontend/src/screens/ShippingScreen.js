@@ -9,6 +9,7 @@ class ShippingScreen extends Component {
       address: '',
       city: '',
       country: '',
+      phoneNumber: '',
       errorMessage: null,
    };
 
@@ -20,9 +21,9 @@ class ShippingScreen extends Component {
       }
 
       if (shippingAddress) {
-         const { address, city, country } = shippingAddress;
+         const { address, city, country, phoneNumber } = shippingAddress;
 
-         this.setState({ address, city, country });
+         this.setState({ address, city, country, phoneNumber });
       } else {
          return;
       }
@@ -43,10 +44,14 @@ class ShippingScreen extends Component {
    onSubmit = (e) => {
       e.preventDefault();
 
-      const { address, city, country } = this.state;
+      const { address, city, country, phoneNumber } = this.state;
 
       if (!address) {
          this.setState({ errorMessage: 'Please enter your address!' });
+      } else if (!phoneNumber) {
+         this.setState({ errorMessage: 'Please enter your phone number' });
+      } else if (phoneNumber.length !== 11 || phoneNumber.charAt(0) !== '0') {
+         this.setState({ errorMessage: 'Please enter a valid phone number' });
       } else if (!city) {
          this.setState({ errorMessage: 'Please enter your city!' });
       } else if (!country) {
@@ -56,6 +61,7 @@ class ShippingScreen extends Component {
             address,
             city,
             country,
+            phoneNumber,
          };
 
          this.props.saveShipping(addressData);
@@ -63,7 +69,7 @@ class ShippingScreen extends Component {
       }
    };
    render() {
-      const { address, city, country, errorMessage } = this.state;
+      const { address, city, country, phoneNumber, errorMessage } = this.state;
       return (
          <div className="container">
             <div className="shipping">
@@ -81,6 +87,17 @@ class ShippingScreen extends Component {
                         name="address"
                         value={address}
                         placeholder="Enter Address"
+                        onChange={this.onChange}
+                     />
+                  </div>
+                  <div>
+                     <label htmlFor="phoneNumber">Phone Number</label>
+                     <input
+                        type="text"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={phoneNumber}
+                        placeholder="Enter Phone number"
                         onChange={this.onChange}
                      />
                   </div>
@@ -106,6 +123,7 @@ class ShippingScreen extends Component {
                         onChange={this.onChange}
                      />
                   </div>
+
                   <div>
                      <button className="btn btn-primary">Continue</button>
                   </div>

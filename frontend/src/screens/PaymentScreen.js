@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage';
 
 class PaymentScreen extends Component {
    state = {
-      payment: null,
+      payment: 'Cash on Delivery',
       errorMessage: null,
    };
 
@@ -59,16 +59,6 @@ class PaymentScreen extends Component {
                   <ErrorMessage message={errorMessage} />
                )}
                <form onSubmit={this.onSubmit}>
-                  <div>
-                     <input
-                        type="radio"
-                        id="paypal"
-                        value="PayPal"
-                        name="payment"
-                        onChange={this.onChange}
-                     />
-                     <label htmlFor="paypal">PayPal or Credit Card</label>
-                  </div>
                   <div>
                      <input
                         type="radio"
